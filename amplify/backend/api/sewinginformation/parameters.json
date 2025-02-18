@@ -1,5 +1,13 @@
 {
   "AppSyncApiName": "sewinginformation",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "CreateAPIKey": 0,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authsewinginformation61673177",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2025-02-18T17:25:56.390Z"
 }
