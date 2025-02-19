@@ -17,6 +17,7 @@ export const getFabric = /* GraphQL */ `query GetFabric($id: ID!) {
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -35,6 +36,7 @@ export const listFabrics = /* GraphQL */ `query ListFabrics(
       imageKey
       createdAt
       updatedAt
+      owner
       __typename
     }
     nextToken
@@ -55,6 +57,7 @@ export const getPattern = /* GraphQL */ `query GetPattern($id: ID!) {
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -77,6 +80,7 @@ export const listPatterns = /* GraphQL */ `query ListPatterns(
       type
       createdAt
       updatedAt
+      owner
       __typename
     }
     nextToken

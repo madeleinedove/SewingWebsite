@@ -20,6 +20,7 @@ export const createFabric = /* GraphQL */ `mutation CreateFabric(
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -39,6 +40,7 @@ export const updateFabric = /* GraphQL */ `mutation UpdateFabric(
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -58,6 +60,7 @@ export const deleteFabric = /* GraphQL */ `mutation DeleteFabric(
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -78,6 +81,7 @@ export const createPattern = /* GraphQL */ `mutation CreatePattern(
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -98,6 +102,7 @@ export const updatePattern = /* GraphQL */ `mutation UpdatePattern(
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -118,6 +123,7 @@ export const deletePattern = /* GraphQL */ `mutation DeletePattern(
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }

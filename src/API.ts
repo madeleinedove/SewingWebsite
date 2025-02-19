@@ -20,6 +20,7 @@ export type ModelFabricConditionInput = {
   not?: ModelFabricConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelStringInput = {
@@ -71,6 +72,7 @@ export type Fabric = {
   imageKey?: string | null,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type UpdateFabricInput = {
@@ -105,6 +107,7 @@ export type ModelPatternConditionInput = {
   not?: ModelPatternConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type Pattern = {
@@ -117,6 +120,7 @@ export type Pattern = {
   type: string,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type UpdatePatternInput = {
@@ -143,6 +147,7 @@ export type ModelFabricFilterInput = {
   and?: Array< ModelFabricFilterInput | null > | null,
   or?: Array< ModelFabricFilterInput | null > | null,
   not?: ModelFabricFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelIDInput = {
@@ -179,6 +184,7 @@ export type ModelPatternFilterInput = {
   and?: Array< ModelPatternFilterInput | null > | null,
   or?: Array< ModelPatternFilterInput | null > | null,
   not?: ModelPatternFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelPatternConnection = {
@@ -197,6 +203,7 @@ export type ModelSubscriptionFabricFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionFabricFilterInput | null > | null,
   or?: Array< ModelSubscriptionFabricFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -240,6 +247,7 @@ export type ModelSubscriptionPatternFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionPatternFilterInput | null > | null,
   or?: Array< ModelSubscriptionPatternFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type CreateFabricMutationVariables = {
@@ -257,6 +265,7 @@ export type CreateFabricMutation = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -275,6 +284,7 @@ export type UpdateFabricMutation = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -293,6 +303,7 @@ export type DeleteFabricMutation = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -312,6 +323,7 @@ export type CreatePatternMutation = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -331,6 +343,7 @@ export type UpdatePatternMutation = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -350,6 +363,7 @@ export type DeletePatternMutation = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -367,6 +381,7 @@ export type GetFabricQuery = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -388,6 +403,7 @@ export type ListFabricsQuery = {
       imageKey?: string | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -408,6 +424,7 @@ export type GetPatternQuery = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -430,6 +447,7 @@ export type ListPatternsQuery = {
       type: string,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -437,6 +455,7 @@ export type ListPatternsQuery = {
 
 export type OnCreateFabricSubscriptionVariables = {
   filter?: ModelSubscriptionFabricFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateFabricSubscription = {
@@ -449,11 +468,13 @@ export type OnCreateFabricSubscription = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdateFabricSubscriptionVariables = {
   filter?: ModelSubscriptionFabricFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateFabricSubscription = {
@@ -466,11 +487,13 @@ export type OnUpdateFabricSubscription = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeleteFabricSubscriptionVariables = {
   filter?: ModelSubscriptionFabricFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteFabricSubscription = {
@@ -483,11 +506,13 @@ export type OnDeleteFabricSubscription = {
     imageKey?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnCreatePatternSubscriptionVariables = {
   filter?: ModelSubscriptionPatternFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreatePatternSubscription = {
@@ -501,11 +526,13 @@ export type OnCreatePatternSubscription = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdatePatternSubscriptionVariables = {
   filter?: ModelSubscriptionPatternFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdatePatternSubscription = {
@@ -519,11 +546,13 @@ export type OnUpdatePatternSubscription = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeletePatternSubscriptionVariables = {
   filter?: ModelSubscriptionPatternFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeletePatternSubscription = {
@@ -537,5 +566,6 @@ export type OnDeletePatternSubscription = {
     type: string,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };

@@ -8,8 +8,11 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateFabric = /* GraphQL */ `subscription OnCreateFabric($filter: ModelSubscriptionFabricFilterInput) {
-  onCreateFabric(filter: $filter) {
+export const onCreateFabric = /* GraphQL */ `subscription OnCreateFabric(
+  $filter: ModelSubscriptionFabricFilterInput
+  $owner: String
+) {
+  onCreateFabric(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -17,6 +20,7 @@ export const onCreateFabric = /* GraphQL */ `subscription OnCreateFabric($filter
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -24,8 +28,11 @@ export const onCreateFabric = /* GraphQL */ `subscription OnCreateFabric($filter
   APITypes.OnCreateFabricSubscriptionVariables,
   APITypes.OnCreateFabricSubscription
 >;
-export const onUpdateFabric = /* GraphQL */ `subscription OnUpdateFabric($filter: ModelSubscriptionFabricFilterInput) {
-  onUpdateFabric(filter: $filter) {
+export const onUpdateFabric = /* GraphQL */ `subscription OnUpdateFabric(
+  $filter: ModelSubscriptionFabricFilterInput
+  $owner: String
+) {
+  onUpdateFabric(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -33,6 +40,7 @@ export const onUpdateFabric = /* GraphQL */ `subscription OnUpdateFabric($filter
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -40,8 +48,11 @@ export const onUpdateFabric = /* GraphQL */ `subscription OnUpdateFabric($filter
   APITypes.OnUpdateFabricSubscriptionVariables,
   APITypes.OnUpdateFabricSubscription
 >;
-export const onDeleteFabric = /* GraphQL */ `subscription OnDeleteFabric($filter: ModelSubscriptionFabricFilterInput) {
-  onDeleteFabric(filter: $filter) {
+export const onDeleteFabric = /* GraphQL */ `subscription OnDeleteFabric(
+  $filter: ModelSubscriptionFabricFilterInput
+  $owner: String
+) {
+  onDeleteFabric(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -49,6 +60,7 @@ export const onDeleteFabric = /* GraphQL */ `subscription OnDeleteFabric($filter
     imageKey
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -56,8 +68,11 @@ export const onDeleteFabric = /* GraphQL */ `subscription OnDeleteFabric($filter
   APITypes.OnDeleteFabricSubscriptionVariables,
   APITypes.OnDeleteFabricSubscription
 >;
-export const onCreatePattern = /* GraphQL */ `subscription OnCreatePattern($filter: ModelSubscriptionPatternFilterInput) {
-  onCreatePattern(filter: $filter) {
+export const onCreatePattern = /* GraphQL */ `subscription OnCreatePattern(
+  $filter: ModelSubscriptionPatternFilterInput
+  $owner: String
+) {
+  onCreatePattern(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -66,6 +81,7 @@ export const onCreatePattern = /* GraphQL */ `subscription OnCreatePattern($filt
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -73,8 +89,11 @@ export const onCreatePattern = /* GraphQL */ `subscription OnCreatePattern($filt
   APITypes.OnCreatePatternSubscriptionVariables,
   APITypes.OnCreatePatternSubscription
 >;
-export const onUpdatePattern = /* GraphQL */ `subscription OnUpdatePattern($filter: ModelSubscriptionPatternFilterInput) {
-  onUpdatePattern(filter: $filter) {
+export const onUpdatePattern = /* GraphQL */ `subscription OnUpdatePattern(
+  $filter: ModelSubscriptionPatternFilterInput
+  $owner: String
+) {
+  onUpdatePattern(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -83,6 +102,7 @@ export const onUpdatePattern = /* GraphQL */ `subscription OnUpdatePattern($filt
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -90,8 +110,11 @@ export const onUpdatePattern = /* GraphQL */ `subscription OnUpdatePattern($filt
   APITypes.OnUpdatePatternSubscriptionVariables,
   APITypes.OnUpdatePatternSubscription
 >;
-export const onDeletePattern = /* GraphQL */ `subscription OnDeletePattern($filter: ModelSubscriptionPatternFilterInput) {
-  onDeletePattern(filter: $filter) {
+export const onDeletePattern = /* GraphQL */ `subscription OnDeletePattern(
+  $filter: ModelSubscriptionPatternFilterInput
+  $owner: String
+) {
+  onDeletePattern(filter: $filter, owner: $owner) {
     id
     name
     description
@@ -100,6 +123,7 @@ export const onDeletePattern = /* GraphQL */ `subscription OnDeletePattern($filt
     type
     createdAt
     updatedAt
+    owner
     __typename
   }
 }

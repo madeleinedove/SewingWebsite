@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Madeleine's Sewing Information
               </Typography>
+              <Button color="inherit">Logout</Button>
             </Toolbar>
           </AppBar>
           {children}
