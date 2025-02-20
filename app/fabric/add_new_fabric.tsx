@@ -4,17 +4,73 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
+import * as mutations from '../../src/graphql/mutations';
+import { CreateFabricInput } from '@/src/API';
+import { generateClient } from 'aws-amplify/api';
+import { FileUploader } from '@aws-amplify/ui-react-storage';
+import { remove } from 'aws-amplify/storage';
+
+const client = generateClient({
+  authMode: 'userPool',
+});
 
 type Props = {
   isOpen: boolean
   handleOpen: () => void,
-  handleClose:() => void
+  handleClose: () => void
 }
 
-const AddNewFabric = ({isOpen, handleOpen, handleClose}: Props) => { 
+const AddNewFabric = ({ isOpen, handleOpen, handleClose }: Props) => {
+  const [fileName, setFileName] = useState("")
+
+  const processFile = async ({ file, key }: { file: File, key: string }) => {
+    const fileExtension = file.name.split('.').pop();
+    const name = Date.now().toString()
+    return { file, key: `${name}.${fileExtension}` };
+  };
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formJson = Object.fromEntries((formData as any).entries());
+    const name = formJson.name;
+    const desc = formJson.description;
+    createFabric(name, desc);
+  }
+
+  async function createFabric(name: string, desc: string) {
+    const details: CreateFabricInput = {
+      name: name,
+      description: desc,
+      imageKey: `${fileName}`
+    }
+
+    try {
+      const _ = await client.graphql({
+        query: mutations.createFabric,
+        variables: { input: details }
+      })
+      handleClose();
+    } catch (err) {
+      console.log(err);
+      // TODO: Handle Error
+    }
+  }
+
+  const onCancel = async () => {
+    if (fileName != "") {
+      try {
+        await remove({
+          path: fileName,
+        });
+      } catch (error) {
+        console.log('Error ', error);
+      }
+    }
+    handleClose();
+  }
 
   return (
     <React.Fragment>
@@ -24,19 +80,12 @@ const AddNewFabric = ({isOpen, handleOpen, handleClose}: Props) => {
         slotProps={{
           paper: {
             component: 'form',
-            onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-              event.preventDefault();
-              const formData = new FormData(event.currentTarget);
-              const formJson = Object.fromEntries((formData as any).entries());
-              const email = formJson.email;
-              console.log(email);
-              handleClose();
-            },
+            onSubmit: onSubmit
           },
         }}
       >
         <DialogTitle>Add new fabric</DialogTitle>
-        <DialogContent>
+        <DialogContent >
           <TextField
             required
             margin="dense"
@@ -55,10 +104,19 @@ const AddNewFabric = ({isOpen, handleOpen, handleClose}: Props) => {
             fullWidth
             variant="standard"
           />
-
+          <FileUploader
+            acceptedFileTypes={['image/*']}
+            path="public/"
+            maxFileCount={1}
+            processFile={processFile}
+            onUploadSuccess={({ key }) => {
+              setFileName(key ?? "");
+            }}
+            isResumable
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={onCancel}>Cancel</Button>
           <Button type="submit">Submit</Button>
         </DialogActions>
       </Dialog>

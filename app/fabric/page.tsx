@@ -3,24 +3,22 @@
 import { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import * as queries from '../../src/graphql/queries';
-import * as mutations from '../../src/graphql/mutations';
-import { CreateFabricInput, Fabric } from '@/src/API';
+import { Fabric } from '@/src/API';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import { getUrl } from 'aws-amplify/storage';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
-import { Button } from '@mui/material';
 import AddNewFabric from './add_new_fabric';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 
 const client = generateClient({
   authMode: 'userPool',
 });
-
 
 export default function FabricPage() {
 
@@ -34,26 +32,12 @@ export default function FabricPage() {
 
   const handleClose = () => {
     setOpen(false);
+    fetchFabric();
   };
 
   useEffect(() => {
     fetchFabric();
   }, [])
-
-  // async function createFabric() {
-  //   const details: CreateFabricInput = {
-  //     name: "My name",
-  //     description: "Desc",
-  //     imageKey: ""
-  //   }
-
-  //   try {
-  //     const _ = await client.graphql({
-  //       query: mutations.createFabric,
-  //       variables:{input:  details}
-  //     })
-  //   } catch (err) { console.log(err); }
-  // }
 
   async function fetchFabric() {
     try {
@@ -63,28 +47,16 @@ export default function FabricPage() {
     } catch (err) { console.log(err); }
   }
 
-  async function fetchFabricImage(imagePath: any): Promise<String> {
-    const getUrlResult = await getUrl({
-      path: imagePath,
-      options: {
-        validateObjectExistence: false,
-        expiresIn: 20,
-        useAccelerateEndpoint: true
-      },
-    })
-    return getUrlResult.url.toString();
-  }
-
 
   return (
     <div>
-      <ImageList sx={{ width: "100%", height: "100%" }} cols={3} gap={50}>
-        {fabrics.map((item, index) => (
+      <ImageList sx={{ width: "100%", height: "100%" }} cols={4} gap={50}>
+        {fabrics.map((item) => (
           <ImageListItem key={item.id}>
-            <StorageImage alt={item.name} path={`public/${item.imageKey ?? ""}`} height={400} />
+            <StorageImage alt={item.name} path={`${item.imageKey ?? ""}`} height={400} />
             <ImageListItemBar
               title={item.name}
-              subtitle={item.imageKey}
+              subtitle={item.description}
               actionIcon={
                 <IconButton
                   sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
@@ -97,10 +69,15 @@ export default function FabricPage() {
           </ImageListItem>
         ))}
       </ImageList>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
-      <AddNewFabric handleClose={handleClose} handleOpen={handleClickOpen} isOpen={open}/>
+      <Fab variant="extended" color="primary" aria-label="add" onClick={handleClickOpen} sx={{
+        position: "fixed",
+        bottom: (theme) => theme.spacing(2),
+        right: (theme) => theme.spacing(2)
+      }}>
+        <AddIcon sx={{ mr: 1 }} />
+        Add new fabric
+      </Fab>
+      <AddNewFabric handleClose={handleClose} handleOpen={handleClickOpen} isOpen={open} />
     </div>)
 }
 
