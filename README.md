@@ -4,11 +4,22 @@ Madeleine's sewing information is a website that organizes fabric and patterns f
 ## App Preview
 
 ### Login
+![image](https://github.com/user-attachments/assets/55355e5d-b6fe-4eeb-bdab-03f3fd58b765)
+
 ### Home Page
+![image](https://github.com/user-attachments/assets/520d2358-8925-474f-81a1-83635cfe2292)
+
 ### Fabric's Page
+![image](https://github.com/user-attachments/assets/5f1785a7-3ecd-4dad-816a-ddba8127914c)
+
 ### Add new fabric
+![image](https://github.com/user-attachments/assets/7708e6ce-7693-415e-902e-22fc53c2529c)
+
 ### Pattern's Page
+![image](https://github.com/user-attachments/assets/7a2af629-44be-4d65-b1e2-7a82f660377d)
+
 ### Add new pattern
+![image](https://github.com/user-attachments/assets/18e2e39e-8051-4c25-aaed-6c377783067c)
 
 ## What's next for the website?
 
