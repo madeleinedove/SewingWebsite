@@ -54,7 +54,6 @@ export const getPattern = /* GraphQL */ `query GetPattern($id: ID!) {
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner
@@ -77,7 +76,6 @@ export const listPatterns = /* GraphQL */ `query ListPatterns(
       description
       tags
       manufactor
-      type
       createdAt
       updatedAt
       owner

@@ -78,7 +78,6 @@ export const createPattern = /* GraphQL */ `mutation CreatePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner
@@ -99,7 +98,6 @@ export const updatePattern = /* GraphQL */ `mutation UpdatePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner
@@ -120,7 +118,6 @@ export const deletePattern = /* GraphQL */ `mutation DeletePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner

@@ -7,10 +7,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import * as mutations from '../../src/graphql/mutations';
-import { CreateFabricInput } from '@/src/API';
 import { generateClient } from 'aws-amplify/api';
-import { FileUploader } from '@aws-amplify/ui-react-storage';
-import { remove } from 'aws-amplify/storage';
+import { CreatePatternInput } from '@/src/API';
+import PatternManufactors from './manufactors';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 
 const client = generateClient({
   authMode: 'userPool',
@@ -21,14 +24,8 @@ type Props = {
   handleClose: () => void
 }
 
-const AddNewFabric = ({ isOpen, handleClose }: Props) => {
-  const [fileName, setFileName] = useState("")
-
-  const processFile = async ({ file, key }: { file: File, key: string }) => {
-    const fileExtension = file.name.split('.').pop();
-    const name = Date.now().toString()
-    return { file, key: `${name}.${fileExtension}` };
-  };
+const AddNewPattern = ({ isOpen, handleClose }: Props) => {
+  const [manufactor, setManufactor] = useState("");
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,19 +33,19 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
     const formJson = Object.fromEntries((formData as any).entries());
     const name = formJson.name;
     const desc = formJson.description;
-    createFabric(name, desc);
+    createPattern(name, desc);
   }
 
-  async function createFabric(name: string, desc: string) {
-    const details: CreateFabricInput = {
+  async function createPattern(name: string, desc: string) {
+    const details: CreatePatternInput = {
       name: name,
       description: desc,
-      imageKey: `${fileName}`
+      manufactor: manufactor
     }
 
     try {
       const _ = await client.graphql({
-        query: mutations.createFabric,
+        query: mutations.createPattern,
         variables: { input: details }
       })
       handleClose();
@@ -58,18 +55,9 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
     }
   }
 
-  const onCancel = async () => {
-    if (fileName != "") {
-      try {
-        await remove({
-          path: fileName,
-        });
-      } catch (error) {
-        console.log('Error ', error);
-      }
-    }
-    handleClose();
-  }
+  const handleChange = (event: SelectChangeEvent) => {
+    setManufactor(event.target.value);
+  };
 
   return (
     <React.Fragment>
@@ -83,14 +71,14 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
           },
         }}
       >
-        <DialogTitle>Add new fabric</DialogTitle>
+        <DialogTitle>Add new Pattern</DialogTitle>
         <DialogContent >
           <TextField
             required
             margin="dense"
             id="name"
             name="name"
-            label="Fabric Name"
+            label="Pattern Name"
             fullWidth
             variant="standard"
           />
@@ -99,23 +87,21 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
             margin="dense"
             id="desc"
             name="description"
-            label="Fabric Desciprtion"
+            label="Pattern Desciprtion"
             fullWidth
             variant="standard"
           />
-          <FileUploader
-            acceptedFileTypes={['image/*']}
-            path="public/"
-            maxFileCount={1}
-            processFile={processFile}
-            onUploadSuccess={({ key }) => {
-              setFileName(key ?? "");
-            }}
-            isResumable
-          />
+          <FormControl sx={{ marginTop: 1, minWidth: 150 }} fullWidth>
+          <InputLabel>Manufactors</InputLabel>
+          <Select onChange={handleChange} label="Manufactors" value={manufactor}>
+            {Object.values(PatternManufactors).map((value, key) => (
+              <MenuItem value={value} key={key}>{value}</MenuItem >
+            ))}
+          </Select></FormControl>
+
         </DialogContent>
         <DialogActions>
-          <Button onClick={onCancel}>Cancel</Button>
+          <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit">Submit</Button>
         </DialogActions>
       </Dialog>
@@ -123,4 +109,4 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
   );
 }
 
-export default AddNewFabric;
+export default AddNewPattern;

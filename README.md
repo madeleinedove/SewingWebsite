@@ -1,21 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Madeleine's Sewing Information
+Madeleine's sewing information is a website that organizes fabric and patterns for the average sewer. This started as a combination of my sewing hobby and my passion for coding. This is a React/Next.js project with aws amplify. More information about technologies used can be found below
 
-## Getting Started
+## App Preview
 
-First, run the development server:
+### Login
+### Home Page
+### Fabric's Page
+### Add new fabric
+### Pattern's Page
+### Add new pattern
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What's next for the website?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Add progress, tooltips
+- Add amount of fabric (yards)
+- Search patterns by fabric
+- Add tags to patterns and fabric
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Goals        | Date           | 
+| ------------- |:-------------:|
+| Add the ability to add or subtract to amount of fabric| Mid 2025 |
+| Add the ability to move patterns to completed| Mid 2025      |
+| Add the ability to delete fabric and patterns | End of 2025    |
+| Add link or pdf for pattern | End of 2025
+
+## Technologies used 
+* [AWS Amplify](https://docs.amplify.aws/)
+    * [Authentication](https://docs.amplify.aws/vue/build-a-backend/auth/)
+    * [Graphql API](https://docs.amplify.aws/vue/build-a-backend/data/)
+    * [Storage](https://docs.amplify.aws/vue/build-a-backend/storage/)
+* [React](https://react.dev/)
+* [Next.js](https://nextjs.org/learn/react-foundations/updating-state)

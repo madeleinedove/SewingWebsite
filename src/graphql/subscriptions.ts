@@ -78,7 +78,6 @@ export const onCreatePattern = /* GraphQL */ `subscription OnCreatePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner
@@ -99,7 +98,6 @@ export const onUpdatePattern = /* GraphQL */ `subscription OnUpdatePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner
@@ -120,7 +118,6 @@ export const onDeletePattern = /* GraphQL */ `subscription OnDeletePattern(
     description
     tags
     manufactor
-    type
     createdAt
     updatedAt
     owner

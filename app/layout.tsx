@@ -35,7 +35,6 @@ export default function RootLayout({
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Madeleine's Sewing Information
               </Typography>
-              <Button color="inherit">Logout</Button>
             </Toolbar>
           </AppBar>
           {children}

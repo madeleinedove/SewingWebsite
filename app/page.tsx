@@ -7,55 +7,72 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import './main.css'
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-import Image from 'next/image';
+import { CardActionArea, Typography } from '@mui/material';
 import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { Amplify } from 'aws-amplify';
 import config from '../src/amplifyconfiguration.json'
+import DescriptionIcon from '@mui/icons-material/Description';
+import TextureIcon from '@mui/icons-material/Texture';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 Amplify.configure(config);
 
 export function Home({ signOut, user }: WithAuthenticatorProps) {
-  
+
   const router = useRouter()
   return (
     <div>
       <main  >
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={5} direction="row"
-            alignItems="center"
             justifyContent="center"
-            sx={{ minHeight: '100vh' }}>
-            <Grid size={3}>
-              <Card className="item">
-                <CardActionArea onClick={() => router.push('/fabric')}>
-                  <CardContent>
-                    Fabric
-                    <CardMedia
-                    >
-                      {/* TODO: Make pretty */}
-                      <Image src="/assets/fabricGraphic.jpg" height="200" width="200" objectFit="cover" alt="" />
-                    </CardMedia>
-                  </CardContent>
-                </CardActionArea>
+            alignItems="flex-start"
+            sx={{ minHeight: '100vh', paddingTop: '50px' }}>
+            <Grid size={2}>
+              <CardActionArea onClick={() => router.push('/fabric')}>
 
-              </Card>
-            </Grid>
-            <Grid size={3}>
-              <Card className="item" square={false} elevation={3}>
-                Patterns
-                <CardActionArea onClick={() => router.push('/patterns')}>
+                <Card className="item">
+                  <Typography variant='h5'>
+                    Fabric
+                  </Typography>
                   <CardContent>
-                    <CardMedia
-                    >
-                      <Image src="/assets/patternsGraphic.jpg" objectFit="cover" alt="" height="200" width="200" />
-                    </CardMedia>
+                    List of all fabrics and the ability to add new fabrics
+                    <br />
+                    <DescriptionIcon fontSize='large' />
                   </CardContent>
-                </CardActionArea>
-              </Card>
+                </Card>
+              </CardActionArea>
+
+            </Grid>
+            <Grid size={2}>
+              <CardActionArea onClick={() => router.push('/patterns')}>
+                <Card className="item" square={false} elevation={3}>
+                  <Typography variant='h5'>
+                    Patterns
+                  </Typography>
+                  <CardContent>
+                    List of all patterns and the ability to add new patterns
+                    <br />
+                    <TextureIcon fontSize='large' />
+                  </CardContent>
+                </Card>
+              </CardActionArea>
+            </Grid>
+            <Grid size={2}>
+              <CardActionArea onClick={() => {}}>
+                <Card className="item" square={false} elevation={3}>
+                  <Typography variant='h5'>
+                    Coming soon
+                  </Typography>
+                  <CardContent>
+                    An exciting new feature coming 2025
+                    <br />
+                    <ConstructionIcon fontSize='large' />
+                  </CardContent>
+                </Card>
+              </CardActionArea>
             </Grid>
           </Grid>
         </Box>
