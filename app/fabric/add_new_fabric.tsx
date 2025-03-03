@@ -24,7 +24,7 @@ type Props = {
 const AddNewFabric = ({ isOpen, handleClose }: Props) => {
   const [fileName, setFileName] = useState("")
 
-  const processFile = async ({ file, key }: { file: File, key: string }) => {
+  const processFile = async ({ file }: { file: File, key: string }) => {
     const fileExtension = file.name.split('.').pop();
     const name = Date.now().toString()
     return { file, key: `${name}.${fileExtension}` };
@@ -47,7 +47,7 @@ const AddNewFabric = ({ isOpen, handleClose }: Props) => {
     }
 
     try {
-      const _ = await client.graphql({
+      await client.graphql({
         query: mutations.createFabric,
         variables: { input: details }
       })

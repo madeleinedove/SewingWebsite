@@ -44,7 +44,7 @@ const AddNewPattern = ({ isOpen, handleClose }: Props) => {
     }
 
     try {
-      const _ = await client.graphql({
+      await client.graphql({
         query: mutations.createPattern,
         variables: { input: details }
       })

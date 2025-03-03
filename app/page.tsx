@@ -8,7 +8,6 @@ import Grid from '@mui/material/Grid2';
 import './main.css'
 import CardContent from '@mui/material/CardContent';
 import { CardActionArea, Typography } from '@mui/material';
-import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { Amplify } from 'aws-amplify';
@@ -19,7 +18,7 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 
 Amplify.configure(config);
 
-export function Home({ signOut, user }: WithAuthenticatorProps) {
+export function Home() {
 
   const router = useRouter()
   return (

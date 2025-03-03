@@ -17,3 +17,15 @@ type Pattern @model @auth(rules: [{ allow: public, operations: [read] }, { allow
   tags: AWSJSON
   manufactor: String
 }
+
+type WebPatternItems @model @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }])  {
+  id: ID!
+  name: String!
+  fabrics: [WebFabricItems] @manyToMany(relationName: "FabricToPatterns")
+}
+
+type WebFabricItems @model @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }])  {
+  id: ID!
+  name: String!
+  patterns: [WebPatternItems] @manyToMany(relationName: "FabricToPatterns")
+}

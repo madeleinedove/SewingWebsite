@@ -132,17 +132,106 @@ export type DeletePatternInput = {
   id: string,
 };
 
-export type ModelFabricFilterInput = {
-  id?: ModelIDInput | null,
+export type CreateWebPatternItemsInput = {
+  id?: string | null,
+  name: string,
+};
+
+export type ModelWebPatternItemsConditionInput = {
   name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  tags?: ModelStringInput | null,
-  imageKey?: ModelStringInput | null,
+  and?: Array< ModelWebPatternItemsConditionInput | null > | null,
+  or?: Array< ModelWebPatternItemsConditionInput | null > | null,
+  not?: ModelWebPatternItemsConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  and?: Array< ModelFabricFilterInput | null > | null,
-  or?: Array< ModelFabricFilterInput | null > | null,
-  not?: ModelFabricFilterInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type WebPatternItems = {
+  __typename: "WebPatternItems",
+  id: string,
+  name: string,
+  fabrics?: ModelFabricToPatternsConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type ModelFabricToPatternsConnection = {
+  __typename: "ModelFabricToPatternsConnection",
+  items:  Array<FabricToPatterns | null >,
+  nextToken?: string | null,
+};
+
+export type FabricToPatterns = {
+  __typename: "FabricToPatterns",
+  id: string,
+  webPatternItemsId: string,
+  webFabricItemsId: string,
+  webPatternItems: WebPatternItems,
+  webFabricItems: WebFabricItems,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type WebFabricItems = {
+  __typename: "WebFabricItems",
+  id: string,
+  name: string,
+  patterns?: ModelFabricToPatternsConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type UpdateWebPatternItemsInput = {
+  id: string,
+  name?: string | null,
+};
+
+export type DeleteWebPatternItemsInput = {
+  id: string,
+};
+
+export type CreateWebFabricItemsInput = {
+  id?: string | null,
+  name: string,
+};
+
+export type ModelWebFabricItemsConditionInput = {
+  name?: ModelStringInput | null,
+  and?: Array< ModelWebFabricItemsConditionInput | null > | null,
+  or?: Array< ModelWebFabricItemsConditionInput | null > | null,
+  not?: ModelWebFabricItemsConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type UpdateWebFabricItemsInput = {
+  id: string,
+  name?: string | null,
+};
+
+export type DeleteWebFabricItemsInput = {
+  id: string,
+};
+
+export type CreateFabricToPatternsInput = {
+  id?: string | null,
+  webPatternItemsId: string,
+  webFabricItemsId: string,
+};
+
+export type ModelFabricToPatternsConditionInput = {
+  webPatternItemsId?: ModelIDInput | null,
+  webFabricItemsId?: ModelIDInput | null,
+  and?: Array< ModelFabricToPatternsConditionInput | null > | null,
+  or?: Array< ModelFabricToPatternsConditionInput | null > | null,
+  not?: ModelFabricToPatternsConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   owner?: ModelStringInput | null,
 };
 
@@ -160,6 +249,30 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
+};
+
+export type UpdateFabricToPatternsInput = {
+  id: string,
+  webPatternItemsId?: string | null,
+  webFabricItemsId?: string | null,
+};
+
+export type DeleteFabricToPatternsInput = {
+  id: string,
+};
+
+export type ModelFabricFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  tags?: ModelStringInput | null,
+  imageKey?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelFabricFilterInput | null > | null,
+  or?: Array< ModelFabricFilterInput | null > | null,
+  not?: ModelFabricFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelFabricConnection = {
@@ -187,6 +300,58 @@ export type ModelPatternConnection = {
   items:  Array<Pattern | null >,
   nextToken?: string | null,
 };
+
+export type ModelWebPatternItemsFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelWebPatternItemsFilterInput | null > | null,
+  or?: Array< ModelWebPatternItemsFilterInput | null > | null,
+  not?: ModelWebPatternItemsFilterInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelWebPatternItemsConnection = {
+  __typename: "ModelWebPatternItemsConnection",
+  items:  Array<WebPatternItems | null >,
+  nextToken?: string | null,
+};
+
+export type ModelWebFabricItemsFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelWebFabricItemsFilterInput | null > | null,
+  or?: Array< ModelWebFabricItemsFilterInput | null > | null,
+  not?: ModelWebFabricItemsFilterInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelWebFabricItemsConnection = {
+  __typename: "ModelWebFabricItemsConnection",
+  items:  Array<WebFabricItems | null >,
+  nextToken?: string | null,
+};
+
+export type ModelFabricToPatternsFilterInput = {
+  id?: ModelIDInput | null,
+  webPatternItemsId?: ModelIDInput | null,
+  webFabricItemsId?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelFabricToPatternsFilterInput | null > | null,
+  or?: Array< ModelFabricToPatternsFilterInput | null > | null,
+  not?: ModelFabricToPatternsFilterInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
 
 export type ModelSubscriptionFabricFilterInput = {
   id?: ModelSubscriptionIDInput | null,
@@ -241,6 +406,37 @@ export type ModelSubscriptionPatternFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionPatternFilterInput | null > | null,
   or?: Array< ModelSubscriptionPatternFilterInput | null > | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelSubscriptionWebPatternItemsFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionWebPatternItemsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionWebPatternItemsFilterInput | null > | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelSubscriptionWebFabricItemsFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionWebFabricItemsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionWebFabricItemsFilterInput | null > | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelSubscriptionFabricToPatternsFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  webPatternItemsId?: ModelSubscriptionIDInput | null,
+  webFabricItemsId?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionFabricToPatternsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionFabricToPatternsFilterInput | null > | null,
   owner?: ModelStringInput | null,
 };
 
@@ -358,6 +554,225 @@ export type DeletePatternMutation = {
   } | null,
 };
 
+export type CreateWebPatternItemsMutationVariables = {
+  input: CreateWebPatternItemsInput,
+  condition?: ModelWebPatternItemsConditionInput | null,
+};
+
+export type CreateWebPatternItemsMutation = {
+  createWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateWebPatternItemsMutationVariables = {
+  input: UpdateWebPatternItemsInput,
+  condition?: ModelWebPatternItemsConditionInput | null,
+};
+
+export type UpdateWebPatternItemsMutation = {
+  updateWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteWebPatternItemsMutationVariables = {
+  input: DeleteWebPatternItemsInput,
+  condition?: ModelWebPatternItemsConditionInput | null,
+};
+
+export type DeleteWebPatternItemsMutation = {
+  deleteWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type CreateWebFabricItemsMutationVariables = {
+  input: CreateWebFabricItemsInput,
+  condition?: ModelWebFabricItemsConditionInput | null,
+};
+
+export type CreateWebFabricItemsMutation = {
+  createWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateWebFabricItemsMutationVariables = {
+  input: UpdateWebFabricItemsInput,
+  condition?: ModelWebFabricItemsConditionInput | null,
+};
+
+export type UpdateWebFabricItemsMutation = {
+  updateWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteWebFabricItemsMutationVariables = {
+  input: DeleteWebFabricItemsInput,
+  condition?: ModelWebFabricItemsConditionInput | null,
+};
+
+export type DeleteWebFabricItemsMutation = {
+  deleteWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type CreateFabricToPatternsMutationVariables = {
+  input: CreateFabricToPatternsInput,
+  condition?: ModelFabricToPatternsConditionInput | null,
+};
+
+export type CreateFabricToPatternsMutation = {
+  createFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateFabricToPatternsMutationVariables = {
+  input: UpdateFabricToPatternsInput,
+  condition?: ModelFabricToPatternsConditionInput | null,
+};
+
+export type UpdateFabricToPatternsMutation = {
+  updateFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteFabricToPatternsMutationVariables = {
+  input: DeleteFabricToPatternsInput,
+  condition?: ModelFabricToPatternsConditionInput | null,
+};
+
+export type DeleteFabricToPatternsMutation = {
+  deleteFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
 export type GetFabricQueryVariables = {
   id: string,
 };
@@ -434,6 +849,188 @@ export type ListPatternsQuery = {
       description?: string | null,
       tags?: string | null,
       manufactor?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetWebPatternItemsQueryVariables = {
+  id: string,
+};
+
+export type GetWebPatternItemsQuery = {
+  getWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListWebPatternItemsQueryVariables = {
+  filter?: ModelWebPatternItemsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListWebPatternItemsQuery = {
+  listWebPatternItems?:  {
+    __typename: "ModelWebPatternItemsConnection",
+    items:  Array< {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetWebFabricItemsQueryVariables = {
+  id: string,
+};
+
+export type GetWebFabricItemsQuery = {
+  getWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListWebFabricItemsQueryVariables = {
+  filter?: ModelWebFabricItemsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListWebFabricItemsQuery = {
+  listWebFabricItems?:  {
+    __typename: "ModelWebFabricItemsConnection",
+    items:  Array< {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetFabricToPatternsQueryVariables = {
+  id: string,
+};
+
+export type GetFabricToPatternsQuery = {
+  getFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListFabricToPatternsQueryVariables = {
+  filter?: ModelFabricToPatternsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListFabricToPatternsQuery = {
+  listFabricToPatterns?:  {
+    __typename: "ModelFabricToPatternsConnection",
+    items:  Array< {
+      __typename: "FabricToPatterns",
+      id: string,
+      webPatternItemsId: string,
+      webFabricItemsId: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type FabricToPatternsByWebPatternItemsIdQueryVariables = {
+  webPatternItemsId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelFabricToPatternsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type FabricToPatternsByWebPatternItemsIdQuery = {
+  fabricToPatternsByWebPatternItemsId?:  {
+    __typename: "ModelFabricToPatternsConnection",
+    items:  Array< {
+      __typename: "FabricToPatterns",
+      id: string,
+      webPatternItemsId: string,
+      webFabricItemsId: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type FabricToPatternsByWebFabricItemsIdQueryVariables = {
+  webFabricItemsId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelFabricToPatternsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type FabricToPatternsByWebFabricItemsIdQuery = {
+  fabricToPatternsByWebFabricItemsId?:  {
+    __typename: "ModelFabricToPatternsConnection",
+    items:  Array< {
+      __typename: "FabricToPatterns",
+      id: string,
+      webPatternItemsId: string,
+      webFabricItemsId: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -550,6 +1147,225 @@ export type OnDeletePatternSubscription = {
     description?: string | null,
     tags?: string | null,
     manufactor?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateWebPatternItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebPatternItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateWebPatternItemsSubscription = {
+  onCreateWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateWebPatternItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebPatternItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateWebPatternItemsSubscription = {
+  onUpdateWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteWebPatternItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebPatternItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteWebPatternItemsSubscription = {
+  onDeleteWebPatternItems?:  {
+    __typename: "WebPatternItems",
+    id: string,
+    name: string,
+    fabrics?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateWebFabricItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebFabricItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateWebFabricItemsSubscription = {
+  onCreateWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateWebFabricItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebFabricItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateWebFabricItemsSubscription = {
+  onUpdateWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteWebFabricItemsSubscriptionVariables = {
+  filter?: ModelSubscriptionWebFabricItemsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteWebFabricItemsSubscription = {
+  onDeleteWebFabricItems?:  {
+    __typename: "WebFabricItems",
+    id: string,
+    name: string,
+    patterns?:  {
+      __typename: "ModelFabricToPatternsConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateFabricToPatternsSubscriptionVariables = {
+  filter?: ModelSubscriptionFabricToPatternsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateFabricToPatternsSubscription = {
+  onCreateFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateFabricToPatternsSubscriptionVariables = {
+  filter?: ModelSubscriptionFabricToPatternsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateFabricToPatternsSubscription = {
+  onUpdateFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteFabricToPatternsSubscriptionVariables = {
+  filter?: ModelSubscriptionFabricToPatternsFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteFabricToPatternsSubscription = {
+  onDeleteFabricToPatterns?:  {
+    __typename: "FabricToPatterns",
+    id: string,
+    webPatternItemsId: string,
+    webFabricItemsId: string,
+    webPatternItems:  {
+      __typename: "WebPatternItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
+    webFabricItems:  {
+      __typename: "WebFabricItems",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    },
     createdAt: string,
     updatedAt: string,
     owner?: string | null,
