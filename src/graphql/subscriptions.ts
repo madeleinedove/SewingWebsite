@@ -135,6 +135,7 @@ export const onCreateWebPatternItems = /* GraphQL */ `subscription OnCreateWebPa
   onCreateWebPatternItems(filter: $filter, owner: $owner) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -156,6 +157,7 @@ export const onUpdateWebPatternItems = /* GraphQL */ `subscription OnUpdateWebPa
   onUpdateWebPatternItems(filter: $filter, owner: $owner) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -177,6 +179,7 @@ export const onDeleteWebPatternItems = /* GraphQL */ `subscription OnDeleteWebPa
   onDeleteWebPatternItems(filter: $filter, owner: $owner) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -265,6 +268,7 @@ export const onCreateFabricToPatterns = /* GraphQL */ `subscription OnCreateFabr
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner
@@ -299,6 +303,7 @@ export const onUpdateFabricToPatterns = /* GraphQL */ `subscription OnUpdateFabr
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner
@@ -333,6 +338,7 @@ export const onDeleteFabricToPatterns = /* GraphQL */ `subscription OnDeleteFabr
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner

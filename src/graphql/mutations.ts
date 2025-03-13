@@ -135,6 +135,7 @@ export const createWebPatternItems = /* GraphQL */ `mutation CreateWebPatternIte
   createWebPatternItems(input: $input, condition: $condition) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -156,6 +157,7 @@ export const updateWebPatternItems = /* GraphQL */ `mutation UpdateWebPatternIte
   updateWebPatternItems(input: $input, condition: $condition) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -177,6 +179,7 @@ export const deleteWebPatternItems = /* GraphQL */ `mutation DeleteWebPatternIte
   deleteWebPatternItems(input: $input, condition: $condition) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -265,6 +268,7 @@ export const createFabricToPatterns = /* GraphQL */ `mutation CreateFabricToPatt
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner
@@ -299,6 +303,7 @@ export const updateFabricToPatterns = /* GraphQL */ `mutation UpdateFabricToPatt
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner
@@ -333,6 +338,7 @@ export const deleteFabricToPatterns = /* GraphQL */ `mutation DeleteFabricToPatt
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner

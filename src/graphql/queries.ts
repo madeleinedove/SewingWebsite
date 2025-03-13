@@ -93,6 +93,7 @@ export const getWebPatternItems = /* GraphQL */ `query GetWebPatternItems($id: I
   getWebPatternItems(id: $id) {
     id
     name
+    imageUrl
     fabrics {
       nextToken
       __typename
@@ -116,6 +117,7 @@ export const listWebPatternItems = /* GraphQL */ `query ListWebPatternItems(
     items {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner
@@ -177,6 +179,7 @@ export const getFabricToPatterns = /* GraphQL */ `query GetFabricToPatterns($id:
     webPatternItems {
       id
       name
+      imageUrl
       createdAt
       updatedAt
       owner

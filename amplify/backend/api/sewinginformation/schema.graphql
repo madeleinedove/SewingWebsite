@@ -21,6 +21,7 @@ type Pattern @model @auth(rules: [{ allow: public, operations: [read] }, { allow
 type WebPatternItems @model @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }])  {
   id: ID!
   name: String!
+  imageUrl: String!
   fabrics: [WebFabricItems] @manyToMany(relationName: "FabricToPatterns")
 }
 

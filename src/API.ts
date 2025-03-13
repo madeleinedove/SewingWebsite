@@ -135,10 +135,12 @@ export type DeletePatternInput = {
 export type CreateWebPatternItemsInput = {
   id?: string | null,
   name: string,
+  imageUrl: string,
 };
 
 export type ModelWebPatternItemsConditionInput = {
   name?: ModelStringInput | null,
+  imageUrl?: ModelStringInput | null,
   and?: Array< ModelWebPatternItemsConditionInput | null > | null,
   or?: Array< ModelWebPatternItemsConditionInput | null > | null,
   not?: ModelWebPatternItemsConditionInput | null,
@@ -151,6 +153,7 @@ export type WebPatternItems = {
   __typename: "WebPatternItems",
   id: string,
   name: string,
+  imageUrl: string,
   fabrics?: ModelFabricToPatternsConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -188,6 +191,7 @@ export type WebFabricItems = {
 export type UpdateWebPatternItemsInput = {
   id: string,
   name?: string | null,
+  imageUrl?: string | null,
 };
 
 export type DeleteWebPatternItemsInput = {
@@ -304,6 +308,7 @@ export type ModelPatternConnection = {
 export type ModelWebPatternItemsFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
+  imageUrl?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelWebPatternItemsFilterInput | null > | null,
@@ -412,6 +417,7 @@ export type ModelSubscriptionPatternFilterInput = {
 export type ModelSubscriptionWebPatternItemsFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
+  imageUrl?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionWebPatternItemsFilterInput | null > | null,
@@ -564,6 +570,7 @@ export type CreateWebPatternItemsMutation = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -584,6 +591,7 @@ export type UpdateWebPatternItemsMutation = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -604,6 +612,7 @@ export type DeleteWebPatternItemsMutation = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -689,6 +698,7 @@ export type CreateFabricToPatternsMutation = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -722,6 +732,7 @@ export type UpdateFabricToPatternsMutation = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -755,6 +766,7 @@ export type DeleteFabricToPatternsMutation = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -866,6 +878,7 @@ export type GetWebPatternItemsQuery = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -889,6 +902,7 @@ export type ListWebPatternItemsQuery = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -951,6 +965,7 @@ export type GetFabricToPatternsQuery = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -1163,6 +1178,7 @@ export type OnCreateWebPatternItemsSubscription = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -1183,6 +1199,7 @@ export type OnUpdateWebPatternItemsSubscription = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -1203,6 +1220,7 @@ export type OnDeleteWebPatternItemsSubscription = {
     __typename: "WebPatternItems",
     id: string,
     name: string,
+    imageUrl: string,
     fabrics?:  {
       __typename: "ModelFabricToPatternsConnection",
       nextToken?: string | null,
@@ -1288,6 +1306,7 @@ export type OnCreateFabricToPatternsSubscription = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -1321,6 +1340,7 @@ export type OnUpdateFabricToPatternsSubscription = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -1354,6 +1374,7 @@ export type OnDeleteFabricToPatternsSubscription = {
       __typename: "WebPatternItems",
       id: string,
       name: string,
+      imageUrl: string,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,

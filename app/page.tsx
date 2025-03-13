@@ -60,7 +60,7 @@ export function Home() {
               </CardActionArea>
             </Grid>
             <Grid size={2}>
-              <CardActionArea onClick={() => {}}>
+              <CardActionArea onClick={() => router.push('/patternFinder')}>
                 <Card className="item" square={false} elevation={3}>
                   <Typography variant='h5'>
                     Coming soon

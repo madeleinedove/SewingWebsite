@@ -10,7 +10,6 @@ import AddIcon from '@mui/icons-material/Add';
 import AddNewPattern from './add_new_pattern';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
-import { makeStyles } from '@mui/material';
 import Container from '@mui/material/Container';
 
 
@@ -25,23 +24,6 @@ const columns: GridColDef[] = [
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     width: "100%"
-//   },
-//   paper: {
-//     marginTop: theme.spacing(3),
-//     width: "100%",
-//     overflowX: "auto",
-//     marginBottom: theme.spacing(2),
-//     margin: "auto"
-//   },
-//   table: {
-//     width: '100%',
-//   }
-// }));
-
 
 export default function PatternsPage() {
 
