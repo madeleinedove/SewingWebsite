@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import * as queries from '../../src/graphql/queries';
-import { FabricToPatterns, ListFabricToPatternsQueryVariables, WebFabricItems, WebPatternItems } from '@/src/API';
+import { ListFabricToPatternsQueryVariables, WebFabricItems, WebPatternItems } from '@/src/API';
 import '@aws-amplify/ui-react/styles.css';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
@@ -11,6 +11,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { ImageList, ImageListItem } from '@mui/material';
 
 const client = generateClient({
   authMode: 'userPool',
@@ -63,6 +64,19 @@ export default function PatternFinderPage() {
     fetchPatternsFromFabric(event.target.value);
   };
 
+  const images = (item: WebPatternItems) => {
+    let itemData = item.imageUrl.split(",")
+    return (
+      <ImageList sx={{ width: "100%", height: "100%" }} cols={2} gap={10}>
+        {itemData.map((element: string) => (
+          <ImageListItem key={element}>
+            <img src={element} loading="lazy"/>
+          </ImageListItem>
+        ))}
+      </ImageList>
+    )
+  }
+
   return (
     <div>
       <Container sx={{ paddingTop: '50px' }}>
@@ -75,14 +89,13 @@ export default function PatternFinderPage() {
               ))}
             </Select></FormControl>
         </Paper>
-        <ul>
+        <div>
           {patterns.map((item) => (
-            <div>
-              <li key={item.id}>{item.name}</li>
-              <link rel="icon" href="https://simplicity.com/simplicity/s1021" />
+            <div key={item.id}>
+              {images(item)}
             </div>
           ))}
-        </ul>
+        </div>
       </Container>
     </div>)
 }
