@@ -14,6 +14,8 @@ import '@aws-amplify/ui-react/styles.css';
 import AddNewFabric from './add_new_fabric';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import SewingAppBar from '../component/SewingAppBar';
+import Image from 'next/image'
 
 const client = generateClient({
   authMode: 'userPool',
@@ -49,10 +51,17 @@ export default function FabricPage() {
 
   return (
     <div>
+      <SewingAppBar />
+
       <ImageList sx={{ width: "100%", height: "100%" }} cols={4} gap={50}>
         {fabrics.map((item) => (
           <ImageListItem key={item.id}>
-            <StorageImage alt={item.name} path={`${item.imageKey ?? ""}`} height={400} />
+            {item.imageKey != null &&
+            <StorageImage alt={item.name} path={`${item.imageKey}`} height={400}/>
+            }
+            {item.imageKey == null &&
+            <Image src='/defaultImage.jpg' height={400} width={450} alt="can't find image"/>
+            }
             <ImageListItemBar
               title={item.name}
               subtitle={item.description}

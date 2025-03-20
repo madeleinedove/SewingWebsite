@@ -14,7 +14,8 @@ import { Amplify } from 'aws-amplify';
 import config from '../src/amplifyconfiguration.json'
 import DescriptionIcon from '@mui/icons-material/Description';
 import TextureIcon from '@mui/icons-material/Texture';
-import ConstructionIcon from '@mui/icons-material/Construction';
+import SearchIcon from '@mui/icons-material/Search';
+import SewingAppBar from './component/SewingAppBar';
 
 Amplify.configure(config);
 
@@ -23,6 +24,7 @@ export function Home() {
   const router = useRouter()
   return (
     <div>
+      <SewingAppBar />
       <main  >
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={5} direction="row"
@@ -63,12 +65,12 @@ export function Home() {
               <CardActionArea onClick={() => router.push('/patternFinder')}>
                 <Card className="item" square={false} elevation={3}>
                   <Typography variant='h5'>
-                    Coming soon
+                    Fabric Search
                   </Typography>
                   <CardContent>
-                    An exciting new feature coming 2025
+                    Search for patterns by fabric (beta)
                     <br />
-                    <ConstructionIcon fontSize='large' />
+                    <SearchIcon fontSize='large' />
                   </CardContent>
                 </Card>
               </CardActionArea>

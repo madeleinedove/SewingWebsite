@@ -11,6 +11,7 @@ import AddNewPattern from './add_new_pattern';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
+import SewingAppBar from '../component/SewingAppBar';
 
 
 const client = generateClient({
@@ -52,10 +53,9 @@ export default function PatternsPage() {
     } catch (err) { console.log(err); }
   }
 
-  // const classes = useStyles();
-
   return (
     <div>
+      <SewingAppBar />
       <Container sx={{paddingTop: '50px'}}>
         <Paper sx={{ height: 'auto', width: 'auto' }} >
           <DataGrid

@@ -11,7 +11,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { ImageList, ImageListItem } from '@mui/material';
+import { ImageList, ImageListItem, Typography } from '@mui/material';
+import SewingAppBar from '../component/SewingAppBar';
 
 const client = generateClient({
   authMode: 'userPool',
@@ -79,9 +80,10 @@ export default function PatternFinderPage() {
 
   return (
     <div>
+      <SewingAppBar />
       <Container sx={{ paddingTop: '50px' }}>
         <Paper sx={{ height: 'auto', width: 'auto' }} >
-          <FormControl sx={{ marginTop: 1, minWidth: 150 }} fullWidth>
+          <FormControl sx={{ marginTop: 0, minWidth: 150 }} fullWidth>
             <InputLabel>Fabrics</InputLabel>
             <Select onChange={handleChange} label="Manufactors" value={selectedFabric}>
               {fabrics.map((value) => (
